@@ -7,7 +7,8 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 
 GITHUB = sys.argv[1] if len(sys.argv) > 1 else "GITHUB_LINK_HERE"
 APP = sys.argv[2] if len(sys.argv) > 2 else "STREAMLIT_LINK_HERE"
-SHOT = sys.argv[3] if len(sys.argv) > 3 else None
+OUT = sys.argv[3] if len(sys.argv) > 3 else "ML_Assignment_2_Submission.pdf"
+SHOTS = sys.argv[4:]
 S = getSampleStyleSheet()
 cell = S["BodyText"].clone("cell", fontSize=8, leading=10)
 
@@ -22,8 +23,12 @@ st = [Paragraph("Machine Learning - Assignment 2", S["Title"]),
       Paragraph("1. GitHub Repository Link", S["Heading2"]), Paragraph(inline(GITHUB), S["Normal"]),
       Paragraph("2. Live Streamlit App Link", S["Heading2"]), Paragraph(inline(APP), S["Normal"]),
       Paragraph("3. BITS Virtual Lab Screenshot", S["Heading2"])]
-st.append(Image(SHOT, width=480, height=300, kind="proportional") if SHOT and os.path.exists(SHOT)
-          else Paragraph("[Insert BITS Virtual Lab screenshot here]", S["Normal"]))
+if SHOTS:
+    for n, p in enumerate(SHOTS, 1):
+        st += [Paragraph(f"Screenshot {n} of {len(SHOTS)}", S["Normal"]),
+               Image(p, width=480, height=270, kind="proportional"), Spacer(1, 10)]
+else:
+    st.append(Paragraph("[Insert BITS Virtual Lab screenshot here]", S["Normal"]))
 st += [PageBreak(), Paragraph("4. README.md content", S["Heading2"])]
 
 lines, i = md.splitlines(), 0
@@ -50,5 +55,5 @@ while i < len(lines):
     elif l.startswith("- "): st.append(Paragraph("&bull; " + inline(l[2:]), S["Normal"]))
     elif l.strip(): st.append(Paragraph(inline(l), S["Normal"]))
     i += 1
-SimpleDocTemplate("ML_Assignment_2_Submission.pdf", pagesize=A4, leftMargin=50, rightMargin=50).build(st)
+SimpleDocTemplate(OUT, pagesize=A4, leftMargin=50, rightMargin=50).build(st)
 print("built")
