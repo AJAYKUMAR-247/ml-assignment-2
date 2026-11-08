@@ -1,4 +1,5 @@
 """Train five classifiers on UCI Spambase and save models, test data and metrics."""
+import os
 import joblib
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -12,6 +13,7 @@ from sklearn.svm import SVC
 from metrics_utils import compute_metrics
 
 SEED = 42
+os.makedirs("model", exist_ok=True)
 names = [l.split(":")[0] for l in open("spambase.names").read().splitlines()
          if l and l[0] not in "|1" and ":" in l and "continuous" in l]
 cols = names + ["is_spam"]
