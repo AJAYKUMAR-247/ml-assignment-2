@@ -31,7 +31,7 @@ with st.sidebar:
     st.header("Controls")
     upload = st.file_uploader("Upload test CSV (features + 'is_spam' column)", type="csv")
     choice = st.selectbox("Select model", list(MODEL_FILES))
-    st.markdown("No file? The bundled `test_data.csv` is used.")
+    st.caption("Upload is optional. Once a file is uploaded, all results use your file; until then a sample test set is shown.")
 
 df = pd.read_csv(upload) if upload else pd.read_csv(os.path.join(BASE, "test_data.csv"))
 st.write(f"**Evaluating on:** {'uploaded file' if upload else 'bundled test_data.csv'} - {df.shape[0]} rows, {df.shape[1]} columns")
