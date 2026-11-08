@@ -11,7 +11,7 @@ Build and compare five classification models that decide whether an e-mail is **
 - **Preprocessing:** `StandardScaler` inside the pipelines for Logistic Regression, KNN and SVM (saved with the model). Decision Tree and Naive Bayes use raw features.
 
 ## c. GitHub repository link
-https://github.com/AJAYKUMAR-247/ml-assignment-2-spam
+https://github.com/AJAYKUMAR-247/ml-assignment-2
 
 Live app: STREAMLIT_LINK_HERE
 
