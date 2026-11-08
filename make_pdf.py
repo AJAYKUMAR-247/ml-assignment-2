@@ -22,7 +22,7 @@ st = [Paragraph("Machine Learning - Assignment 2", S["Title"]),
       Paragraph("1. GitHub Repository Link", S["Heading2"]), Paragraph(inline(GITHUB), S["Normal"]),
       Paragraph("2. Live Streamlit App Link", S["Heading2"]), Paragraph(inline(APP), S["Normal"]),
       Paragraph("3. BITS Virtual Lab Screenshot", S["Heading2"])]
-st.append(Image(SHOT, width=440, height=250, kind="proportional") if SHOT and os.path.exists(SHOT)
+st.append(Image(SHOT, width=480, height=300, kind="proportional") if SHOT and os.path.exists(SHOT)
           else Paragraph("[Insert BITS Virtual Lab screenshot here]", S["Normal"]))
 st += [PageBreak(), Paragraph("4. README.md content", S["Heading2"])]
 
