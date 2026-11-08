@@ -13,7 +13,7 @@ Build and compare five classification models that decide whether an e-mail is **
 ## c. GitHub repository link
 https://github.com/AJAYKUMAR-247/ml-assignment-2
 
-Live app: STREAMLIT_LINK_HERE
+Live app: https://ml-assignment-2-nnkvseknuvfozmerehlwgk.streamlit.app/
 
 Repo layout: `app.py`, `train.py`, `metrics_utils.py`, `requirements.txt`, `README.md`, `test_data.csv`, `spambase.data`/`spambase.names` (raw data), `metrics.csv`, `model/*.joblib`.
 
